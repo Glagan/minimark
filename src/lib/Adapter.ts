@@ -125,19 +125,17 @@ export function textToNode(text: string): Node[] {
 				node.attributes = {};
 				for (let k = 0, max = keys.length; k < max; k++) {
 					const attributeValue = tag.attributes[keys[k]]
-						.replace('$content', textContent ?? '')
-						.replace('$title', title ?? '');
+						.replace('$title', title ?? '')
+						.replace('$content', textContent ?? '');
 					node.attributes[keys[k]] = attributeValue;
 				}
 			}
 			// If a textContent is manually set on the Tag
 			// -- Replace the tokens inside it and assign it
 			if (parsingNode.tag.textContent) {
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				textContent = parsingNode
-					.textContent!.replace('$content', textContent ?? '')
-					.replace('$title', title ?? '');
-				node.textContent = textContent;
+				node.textContent = parsingNode.tag.textContent
+					.replace('$title', title ?? '')
+					.replace('$content', textContent ?? '');
 			}
 			// -- Else if there is no textContent, apply textToNode in a nested way
 			else if (parsingNode.tag.textContent == undefined && textContent) {

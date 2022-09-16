@@ -13,7 +13,22 @@
 		"Buttons can be **disabled** after the timer expired.\nYou can also choose to hide the notification, or change a lot of it's content.",
 		"This notification will be updated after it's *death* with nice buttons.\nLet it die to see it."
 	];
+
+	let example: string = 'Edit this text to see a live preview !';
 </script>
+
+<textarea
+	name="example"
+	id="example"
+	cols="30"
+	rows="10"
+	bind:value={example}
+	on:input={() => (example = example)}
+/>
+
+<MiniMark text={example} />
+
+<hr />
 
 {#each tests as test}
 	<div class="wrapper">

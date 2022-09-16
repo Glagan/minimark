@@ -5,9 +5,7 @@
 	export let text: string;
 	export let tag: string = 'div';
 
-	const start = performance.now();
-	const nodes = textToNode(text);
-	console.log('done in ', performance.now() - start, 'ms');
+	$: nodes = textToNode(text);
 </script>
 
 <svelte:element this={tag} class="mk" {...$$restProps}>

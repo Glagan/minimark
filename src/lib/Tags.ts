@@ -65,7 +65,7 @@ const defaultTags: TagDescription[] = [
 		tag: 'a',
 		attributes: {
 			href: '$content',
-			target: 'blank',
+			target: '_blank',
 			title: '$title'
 		},
 		textContent: '$title',
