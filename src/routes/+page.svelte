@@ -3,42 +3,89 @@
 	import '$lib/minimark.css';
 	import '../app.css';
 
-	const tests = [
-		'Content',
-		'Can be multi-line !\nLike this.',
-		'Text can be *styled* **easily**, contain {{links|https://minimark.nikurasu.org/}} and even ``code`` !',
-		'# First Header\n## *Second* header\n',
-		'You can also easily __add__ your own style with ``mk.addTag()``.\nSee {{!https://github.com/Glagan/mini-mark#text-tag}} to know how.',
-		'![You can also have other images|/javascript.png]\n---\nAnd you can separate content.',
-		'The other notification will close with a fadeout thanks to ``notification.close()``.',
-		"Buttons can be **disabled** after the timer expired.\nYou can also choose to hide the notification, or change a lot of it's content.",
-		"This notification will be updated after it's *death* with nice buttons.\nLet it die to see it."
-	];
+	const examples = {
+		Text: 'Content',
+		'Multiple lines': 'Can be multi-line !\nLike this.',
+		Style:
+			'Text can be *styled* **easily**, contain {{links|https://minimark.nikurasu.org/}} and even ``code`` !',
+		Headers: '# First Header\n## *Second* header\n',
+		Customization:
+			'You can easily __add__ your own style with the ``addTag()`` function.\nSee {{!https://github.com/Glagan/minimark#text-tag}} to know how.',
+		Images: '![You can add images|/javascript.png]\n---\nAnd you can separate content.'
+	};
 
-	let example: string = 'Edit this text to see a live preview !';
+	const showExample = (example: string) => {
+		text = examples[example as keyof typeof examples];
+	};
+
+	let text: string = 'Edit this text to see a live preview !';
 </script>
 
-<textarea
-	name="example"
-	id="example"
-	cols="30"
-	rows="10"
-	bind:value={example}
-	on:input={() => (example = example)}
-/>
-
-<MiniMark text={example} />
-
-<hr />
-
-{#each tests as test}
-	<div class="wrapper">
-		<MiniMark text={test} />
+<svelte:head>
+	<title>minimark</title>
+</svelte:head>
+<div class="container mx-auto w-full lg:w-3/5 p-4 pt-0">
+	<div class="p-4 flex flex-row flex-nowrap justify-between items-center">
+		<div>
+			<a
+				title="Github Repository"
+				target="_blank"
+				href="https://github.com/Glagan/minimark"
+				rel="noreferrer noopener"
+			>
+				<span class="inline-block w-full text-lg text-gray-400">Glagan</span>
+				<span class="text-xl text-gray-200">
+					minimark
+					<img
+						class="inline-block align-middle"
+						height="16"
+						width="16"
+						src="/github.png"
+						alt="Github Logo"
+					/>
+				</span>
+			</a>
+		</div>
+		<div class="md:block">
+			<a href="https://ko-fi.com/Y8Y32X73U" target="_blank">
+				<img
+					height="36"
+					style="border: 0px; height: 36px"
+					src="/kofi.png"
+					alt="Buy Me a Coffee at ko-fi.com"
+				/>
+			</a>
+		</div>
 	</div>
-{/each}
+	<div class="mb-4">
+		<p class="text-sm">Click on an example to load it</p>
+		{#each Object.keys(examples) as example}
+			<button on:click={showExample.bind(null, example)}>{example}</button>
+		{/each}
+	</div>
+	<textarea
+		name="example"
+		id="example"
+		cols="30"
+		rows="6"
+		placeholder="Preview content"
+		bind:value={text}
+	/>
+	<div class="overflow-hidden mt-4 p-4 border-2 border-gray-400 rounded-md bg-gray-600">
+		<MiniMark {text} />
+	</div>
+</div>
 
-<style>
-	.wrapper {
-		border-bottom: 1px solid red;
+<style lang="postcss">
+	textarea {
+		@apply w-full transition focus:outline-none focus:border-blue-800 focus:ring focus:ring-blue-800 border border-gray-400 rounded-md p-1 text-gray-800;
+	}
+
+	button {
+		@apply mt-2 mr-2 px-2 py-1 rounded-md border transition focus:outline-none focus:border-blue-800 focus:ring focus:ring-blue-800;
+	}
+
+	button:last-of-type {
+		@apply mr-0;
 	}
 </style>
