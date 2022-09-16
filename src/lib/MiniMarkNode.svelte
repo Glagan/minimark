@@ -25,8 +25,7 @@
 	{#if !('tag' in node)}
 		{#if node.textContent}
 			{node.textContent}
-		{/if}
-		{#if node.childs && node.childs.length > 0}
+		{/if}{#if node.childs && node.childs.length > 0}
 			<svelte:self nodes={node.childs} />
 		{/if}
 	{:else if node.tag === 'img'}
@@ -49,8 +48,7 @@
 		<svelte:element this={node.tag} class={node.classes} {...node.attributes}>
 			{#if node.textContent}
 				{node.textContent}
-			{/if}
-			{#if node.childs && node.childs.length > 0}
+			{/if}{#if node.childs && node.childs.length > 0}
 				<svelte:self nodes={node.childs} />
 			{/if}
 		</svelte:element>

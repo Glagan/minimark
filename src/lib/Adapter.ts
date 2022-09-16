@@ -101,7 +101,7 @@ export function textToNode(text: string): Node[] {
 			const tag = parsingNode.tag;
 			let title: string | undefined;
 			let textContent = parsingNode.textContent;
-			let node: Node = { tag: tag.tag, textContent, classes: tag.classes };
+			const node: Node = { tag: tag.tag, classes: tag.classes };
 			if (tag.extractTitle && textContent) {
 				if (textContent.indexOf('!') === 0) {
 					textContent = textContent.slice(1);
@@ -143,9 +143,8 @@ export function textToNode(text: string): Node[] {
 			else if (parsingNode.tag.textContent == undefined && textContent) {
 				const childs = textToNode(textContent);
 				if (childs.length > 1) {
-					node = childs[0];
-					node.childs = childs.slice(1);
-					nodes.push(node);
+					node.textContent = undefined;
+					node.childs = childs;
 				}
 			}
 			nodes.push(node);
