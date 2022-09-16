@@ -90,7 +90,6 @@ export function textToNode(text: string): Node[] {
 		}
 	}
 	// TODO continueAt - textLength as a text node
-	console.log('parsingNodes', parsingNodes);
 	// Convert parsing node to real usable Nodes
 	// -- also process nested nodes by using textToNode on each found nodes if the tag allow it
 	const nodes: Node[] = [];
@@ -148,6 +147,5 @@ export function textToNode(text: string): Node[] {
 			nodes.push(node);
 		}
 	}
-	console.log('nodes', nodes);
 	return nodes;
 }
