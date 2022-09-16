@@ -63,10 +63,14 @@ export function textToNode(text: string): Node[] {
 					// Insert the newly created token
 					parsingNodes.splice(s++, 0, { tag });
 					// Update the string in parsingNodes to only include the remaining of the string without the tag
-					// TODO handle empty string after tag ?
+					// -- handle empty string (end of the original string) and remove them
 					substring = substring.slice(openPos);
-					parsingNodes[s] = substring;
-					continueAt = 0;
+					if (substring.length == 0) {
+						parsingNodes.splice(s, 1);
+					} else {
+						parsingNodes[s] = substring;
+						continueAt = 0;
+					}
 				} else {
 					const closePos = searchToken(substring, tag.close, openPos);
 					if (closePos > -1) {
@@ -78,10 +82,14 @@ export function textToNode(text: string): Node[] {
 						parsingNodes.splice(s++, 0, { tag, textContent });
 						continueAt = closePos + tagLength.close;
 						// Update the string in parsingNodes to only include the remaining of the string without the tag
-						// TODO handle empty string after tag ?
+						// -- handle empty string (end of the original string) and remove them
 						substring = substring.slice(closePos + tagLength.close);
-						parsingNodes[s] = substring;
-						continueAt = 0;
+						if (substring.length == 0) {
+							parsingNodes.splice(s, 1);
+						} else {
+							parsingNodes[s] = substring;
+							continueAt = 0;
+						}
 					} else {
 						continueAt = openPos;
 					}
@@ -89,7 +97,6 @@ export function textToNode(text: string): Node[] {
 			}
 		}
 	}
-	// TODO continueAt - textLength as a text node
 	// Convert parsing node to real usable Nodes
 	// -- also process nested nodes by using textToNode on each found nodes if the tag allow it
 	const nodes: Node[] = [];
@@ -137,9 +144,10 @@ export function textToNode(text: string): Node[] {
 					.replace('$content', textContent ?? '');
 			}
 			// -- Else if there is no textContent, apply textToNode in a nested way
-			else if (parsingNode.tag.textContent == undefined && textContent) {
+			else if (parsingNode.tag.textContent == undefined && 'tag' in parsingNode && textContent) {
 				const childs = textToNode(textContent);
-				if (childs.length > 1) {
+				if (childs.length > 1 || 'tag' in childs[0]) {
+					node.title = undefined;
 					node.textContent = undefined;
 					node.childs = childs;
 				}
