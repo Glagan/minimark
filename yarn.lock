@@ -2226,9 +2226,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-mark@workspace:.":
+"minimark@workspace:.":
   version: 0.0.0-use.local
-  resolution: "mini-mark@workspace:."
+  resolution: "minimark@workspace:."
   dependencies:
     "@sveltejs/adapter-auto": next
     "@sveltejs/adapter-static": ^1.0.0-next.43
