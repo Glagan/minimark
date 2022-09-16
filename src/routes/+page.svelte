@@ -1,6 +1,7 @@
 <script lang="ts">
 	import MiniMark from '$lib/MiniMark.svelte';
 	import '$lib/minimark.css';
+	import '../app.css';
 
 	const tests = [
 		'Content',
