@@ -2,7 +2,7 @@
 	import Highlight from 'svelte-highlight';
 	import json from 'svelte-highlight/languages/json';
 	import dark from 'svelte-highlight/styles/dark';
-	import { textToNode } from '$lib/Adapter';
+	import { textToNode, type Node } from '$lib/Adapter';
 	import MiniMark from '$lib/MiniMark.svelte';
 	import '$lib/minimark.css';
 	import '../app.css';
@@ -22,7 +22,14 @@
 		text = examples[example as keyof typeof examples];
 	};
 
+	let codePreviewResult: Node[] = [];
+	let generationTime: number = 0;
 	let text: string = 'Edit this text to see a live preview !';
+	$: {
+		const start = performance.now();
+		codePreviewResult = textToNode(text);
+		generationTime = performance.now() - start;
+	}
 </script>
 
 <svelte:head>
@@ -80,8 +87,11 @@
 	<div class="overflow-hidden mt-4 p-4 border-2 border-gray-400 rounded-md bg-gray-600">
 		<MiniMark {text} />
 	</div>
-	<div class="overflow-x-hidden mt-4 max-h-64 overflow-y-scroll rounded-md">
-		<Highlight language={json} code={JSON.stringify(textToNode(text), null, 4)} />
+	<div class="relative overflow-x-hidden mt-4 max-h-64 overflow-y-scroll rounded-md">
+		<div class="absolute top-1 right-1 px-1 py-0 text-sm rounded-sm border border-gray-400">
+			{generationTime}ms
+		</div>
+		<Highlight language={json} code={JSON.stringify(codePreviewResult, null, 4)} />
 	</div>
 </div>
 
