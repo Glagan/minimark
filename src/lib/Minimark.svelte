@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { textToNode } from './Adapter';
-	import MiniMarkNode from './MiniMarkNode.svelte';
+	import MinimarkNode from './MinimarkNode.svelte';
 
 	export let text: string;
 	export let tag: string = 'div';
@@ -9,5 +9,5 @@
 </script>
 
 <svelte:element this={tag} class="mk" {...$$restProps}>
-	<MiniMarkNode {nodes} />
+	<MinimarkNode {nodes} />
 </svelte:element>

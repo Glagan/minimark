@@ -3,7 +3,7 @@
 	import json from 'svelte-highlight/languages/json';
 	import dark from 'svelte-highlight/styles/dark';
 	import { textToNode, type Node } from '$lib/Adapter';
-	import MiniMark from '$lib/MiniMark.svelte';
+	import Minimark from '$lib/Minimark.svelte';
 	import '$lib/minimark.css';
 	import '../app.css';
 
@@ -85,7 +85,7 @@
 		bind:value={text}
 	/>
 	<div class="overflow-hidden mt-4 p-4 border-2 border-gray-400 rounded-md bg-gray-600">
-		<MiniMark {text} />
+		<Minimark {text} />
 	</div>
 	<div class="relative overflow-x-hidden mt-4 max-h-64 overflow-y-scroll rounded-md">
 		<div class="absolute top-1 right-1 px-1 py-0 text-sm rounded-sm border border-gray-400">
