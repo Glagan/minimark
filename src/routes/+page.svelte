@@ -1,4 +1,8 @@
 <script lang="ts">
+	import Highlight from 'svelte-highlight';
+	import json from 'svelte-highlight/languages/json';
+	import dark from 'svelte-highlight/styles/dark';
+	import { textToNode } from '$lib/Adapter';
 	import MiniMark from '$lib/MiniMark.svelte';
 	import '$lib/minimark.css';
 	import '../app.css';
@@ -22,8 +26,10 @@
 </script>
 
 <svelte:head>
+	{@html dark}
 	<title>minimark</title>
 </svelte:head>
+
 <div class="container mx-auto w-full lg:w-3/5 p-4 pt-0">
 	<div class="p-4 flex flex-row flex-nowrap justify-between items-center">
 		<div>
@@ -73,6 +79,9 @@
 	/>
 	<div class="overflow-hidden mt-4 p-4 border-2 border-gray-400 rounded-md bg-gray-600">
 		<MiniMark {text} />
+	</div>
+	<div class="overflow-x-hidden mt-4 max-h-64 overflow-y-scroll rounded-md">
+		<Highlight language={json} code={JSON.stringify(textToNode(text), null, 4)} />
 	</div>
 </div>
 

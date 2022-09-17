@@ -5,6 +5,9 @@ const config = defineConfig({
 	plugins: [sveltekit()],
 	test: {
 		globals: true
+	},
+	optimizeDeps: {
+		include: ['highlight.js', 'highlight.js/lib/core']
 	}
 });
 
