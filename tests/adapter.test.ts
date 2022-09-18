@@ -1,4 +1,4 @@
-import { textToNode } from '$lib/Adapter';
+import textToNode from '$lib/Adapter';
 import { describe, expect, it } from 'vitest';
 
 describe('Simple examples', () => {

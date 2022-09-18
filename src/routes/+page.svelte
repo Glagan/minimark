@@ -2,7 +2,7 @@
 	import Highlight from 'svelte-highlight';
 	import json from 'svelte-highlight/languages/json';
 	import dark from 'svelte-highlight/styles/dark';
-	import { textToNode, type Node } from '$lib/Adapter';
+	import textToNode, { type Node } from '$lib/Adapter';
 	import Minimark from '$lib/Minimark.svelte';
 	import '$lib/minimark.css';
 	import '../app.css';

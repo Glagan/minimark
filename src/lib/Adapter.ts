@@ -211,7 +211,7 @@ function convertParsingNodes(parsingNode: string | ParsingNode): Node {
 	return node;
 }
 
-export function textToNode(text: string): Node[] {
+export default function textToNode(text: string): Node[] {
 	if (text == undefined) return [];
 	// Normalize linebreaks
 	const parsingNodes: ParsingNode[] = [text.replace(/(\r?\n|\r)/gm, '\n')];
