@@ -11,10 +11,10 @@
 		Text: 'Content',
 		'Multiple lines': 'Can be multi-line !\nLike this.',
 		Style:
-			'Text can be *styled* **easily**, contain {{links|https://minimark.nikurasu.org/}} and even ``code`` !',
+			'Text can be *styled* **easily**, contain {{links|https://github.com/Glagan/minimark}} and even ``code`` !',
 		Headers: '# First Header\n## *Second* header\n',
 		Customization:
-			'You can easily __add__ your own style with the ``addTag()`` function.\nSee {{!https://github.com/Glagan/minimark#text-tag}} to know how.',
+			'You can easily __add__ your own style with the ``addTag()`` function.\nSee {{!https://github.com/Glagan/minimark#tags}} to know how.',
 		Images: '![You can add images|/javascript.png]\n---\nAnd you can separate content.'
 	};
 
@@ -34,7 +34,7 @@
 
 <svelte:head>
 	{@html dark}
-	<title>minimark</title>
+	<title>@glagan/minimark</title>
 </svelte:head>
 
 <div class="container mx-auto w-full lg:w-3/5 p-4 pt-0">
