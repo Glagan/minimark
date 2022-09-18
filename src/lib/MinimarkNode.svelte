@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Node } from './Adapter';
+	import type { Node } from './Adapter.js';
 	import './minimark.css';
 
 	const selfClosingTags = [

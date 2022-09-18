@@ -13,6 +13,13 @@
 	max-width: 100%;
 	margin: 0.1rem 0;
 }
+.mk a {
+	color: #65adec;
+}
+.mk a:hover {
+	color: #37a2ff;
+	text-decoration: underline;
+}
 .mk .bold {
 	font-weight: bold;
 }

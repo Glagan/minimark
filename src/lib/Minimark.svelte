@@ -1,5 +1,5 @@
 <script lang="ts">
-	import textToNode from './Adapter';
+	import textToNode from './Adapter.js';
 	import MinimarkNode from './MinimarkNode.svelte';
 
 	export let text: string;

@@ -1,4 +1,4 @@
-import { tags, type TagToken } from './Tags';
+import { tags, type TagToken } from './Tags.js';
 
 export type Node = { childs?: Node[]; attributes?: Record<string, unknown> } & (
 	| { tag: string; classes?: string; title?: string; textContent?: string }
