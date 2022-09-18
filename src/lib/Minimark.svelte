@@ -13,15 +13,6 @@
 	$: nodes = textToNode(text);
 </script>
 
-<svelte:element
-	this={tag}
-	{...$$restProps}
-	class={classes}
-	on:click
-	on:input
-	on:focus
-	on:introstart
-	on:introend
->
+<svelte:element this={tag} {...$$restProps} class={classes} on:click>
 	<MinimarkNode {nodes} />
 </svelte:element>
