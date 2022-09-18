@@ -5,9 +5,23 @@
 	export let text: string;
 	export let tag: string = 'div';
 
+	let classes = 'mk';
+	if ($$restProps.class) {
+		classes = `mk ${$$restProps.class}`;
+	}
+
 	$: nodes = textToNode(text);
 </script>
 
-<svelte:element this={tag} class="mk" {...$$restProps}>
+<svelte:element
+	this={tag}
+	{...$$restProps}
+	class={classes}
+	on:click
+	on:input
+	on:focus
+	on:introstart
+	on:introend
+>
 	<MinimarkNode {nodes} />
 </svelte:element>

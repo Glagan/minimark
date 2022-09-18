@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Node } from './Adapter';
+	import 'minimark.css';
 
 	const selfClosingTags = [
 		'area',
