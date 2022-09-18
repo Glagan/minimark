@@ -23,20 +23,6 @@ You only need to use the ``<Minimark>`` component to render text:
 
 The generated node will be surrounded by a ``<div>`` by default, but you can use any tag you want by setting the ``tag`` props.
 
-## Style
-
-Some CSS classes are applied to tags, but they aren't inserted by default, if you want the default style that **minimark** use, you need to import ``minimark.css``:
-
-
-```jsx
-<script lang="ts">
-	import '@glagan/minimark/minimark.css';
-	// Svelte component...
-</script>
-```
-
-The ``<Minimark>`` component has the ``mk`` CSS class.
-
 ## Tags
 
 You can insert links, images and stylize text by using tags that resemble **Markdown**.
@@ -61,7 +47,7 @@ You can add custom tags easily with the ``addTag(definition)`` function.
 A tag object can have the following properties:
 
 ```typescript
-import {addTag} from '@glagan/minimark';
+import { addTag } from '@glagan/minimark';
 
 addTag({
     tag: "span", // The node tag, e.g <span>
