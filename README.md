@@ -10,7 +10,7 @@ You can find a demo with a live preview of the rendered text at [http://minimark
 ## Installation
 
 ```bash
-yarn add @glagan/minimark # or npm install @glagan/minimark
+pnpm add @glagan/minimark
 ```
 
 ## How to use
